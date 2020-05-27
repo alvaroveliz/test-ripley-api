@@ -26,9 +26,8 @@ class ProductsService {
         const cache = await redisService.getCache(`${redisConfig.key}-${partNumber}`);
         if (cache) return cache;
 
-        const partNumbers = services.simple.partNumbers.join(',');
-        const productsUrl = `${requestUrl}products/${partNumber}`;
-        const result = await fetch(productsUrl);
+        const productUrl = `${requestUrl}products/${partNumber}`;
+        const result = await fetch(productUrl);
         const product = await result.json();
 
         redisService.setCache(`${redisConfig.key}-${partNumber}`, product);
