@@ -17,7 +17,7 @@ class ProductsService {
         const result = await fetch(productsUrl);
         const products = await result.json();
 
-        redisService.setCache(`${redisConfig.key}-list`, product);
+        redisService.setCache(`${redisConfig.key}-list`, products);
 
         return products;
     }
